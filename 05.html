@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="main">
+    <my-button></my-button>
+</div>
+<script>
+    Vue.component('my-button',{
+        template:'<div><button id="btn" @mouseover="mouseOver" @mouseleave="mouseLeave" @click="sendVerify()" :style="active">单击我</button></div>',
+        data:function () {
+            return{
+                active:''
+            }
+        },
+        methods:{
+            sendVerify:function(){
+                alert("单击我");
+            },
+            mouseOver:function () {
+                this.active='background:blue;color:white';
+            },
+            mouseLeave:function () {
+             this.active='background:white;border:1px solid blue;width:100px;height:35px;';
+            }
+        }
+    })
+    new Vue({
+        el:'#main',
+ /*       data:function () {
+            return{
+                active:''
+            }
+        }*/
+    })
+</script>
+
+</body>
+</html>

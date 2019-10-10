@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div class="box">
+   <my-box></my-box>
+</div>
+
+<script>
+    Vue.component('my-box',{
+        template:'<table><tr><td><input type="button"></td><td><input type="button"></td><td><input type="button"></td><td><input type="button"></td></tr></table>',
+        data:function () {
+            return{}
+        }
+    })
+</script>
+<script>
+ Vue.component('my-box',{
+        props : ['c1','c2','num'],
+        data:function(){
+            return {
+                value : this.num
+            }
+        },
+        template:' <ul><li ></li></ul>',
+    })
+    new Vue({
+        el : ".box",
+        data : {
+            a1 : ["选项1","选项2","选项3"],
+            a2 : ["这是选项1的内容","这是选项2的内容","这是选项3的内容"],
+            c1 : ["京东超市","数码电器","服饰美妆","京东生鲜"],
+            c2 : ["这是超市的内容","这是数码的内容","这是服装的内容","这是生鲜的内容"],
+            num : 0,
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="demo3">    //props的应用
+    <input type="text" v-model="msgName" placeholder="请输入昵称："/>
+    <p><textarea  v-model="msgInfo" placeholder="请输入简介："></textarea></p>
+    <custom-screen :inputvalue1="msgName" :inputvalue2="msgInfo"></custom-screen>
+</div>
+</div>
+<script>
+   Vue.component('custom-screen',{   //子组件
+       template:'<div><h2>昵称：{{inputvalue1}}</h2><pre>简介：{{inputvalue2}}</pre></div>',
+       props:['inputvalue1','inputvalue2'],   //inputvalue1和2定义在子组件中，props用来提供容器来装变量
+       data:function () {
+           return{}
+       }
+
+   })
+    new Vue({              //demo3是父组件
+        el:'#demo3',
+        data:function(){
+            return{
+                msgName:'', //父组件中的变量，值从网页中输入，或者设置初始值
+                msgInfo:''
+            }
+        }
+    })
+</script>
+</body>
+</html>

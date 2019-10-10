@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="main">
+    <my-button></my-button>
+</div>
+<script>
+    var myButton={
+        template:'<div><button @click="addClick()">+</button><input type="text" v-model="count" ref="txt" /><button @click="cutClick()">-</button></div>',
+        data:function (){
+            return{
+                count:'1'
+            }
+        },
+        methods:{
+            addClick:function () {
+                this.count++;
+            },
+            cutClick:function () {
+                if(this.count>1){
+                    this.count--;
+                }else{
+                    alert("数量为1，不能再减");
+                }
+            }
+        },
+        watch:{
+            count:function () {
+                 var reg = /^[1-9][0-9]{0,}$/;
+                if( this.count<0 ||!reg.test(this.count))
+                {
+                    this.count=1;
+                    alert("输入数据不合法");
+                }
+            }
+
+        }
+
+    }
+    new Vue({
+        el:'#main',
+        components:{
+            'my-button':myButton
+        }
+    })
+
+</script>
+</body>
+</html>

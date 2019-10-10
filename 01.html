@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习1</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="demo1">
+    <demo-login></demo-login>
+</div>
+<script>
+     Vue.component('DemoLogin',{
+         template:'<div><form action="#"><p>请输入用户名：<input type="text" v-model="user"/></p><p>请输入密码：<input type="password" v-model="pass"><label>{{errmsg}}</label></p><p><button type="submit">登录</button></p></form></div>',
+         data:function(){
+             return{
+                 user:'',
+                 pass:'',
+                 errmsg:''
+             }
+         },
+         watch:{
+             pass:function(){
+                 var reg=new RegExp(/^\w{6,16}$/)
+                 if (!reg.test(this.pass))
+                     this.errmsg="密码需要6-16位字符";
+                 else
+                     this.errmsg="";
+
+             }
+         }
+     })
+    new Vue({
+        el:'#demo1'
+    })
+</script>
+</body>
+</html>

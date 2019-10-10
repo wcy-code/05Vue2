@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="demo3">
+    <input type="text" v-model="msgName" placeholder="请输入昵称："/>
+    <p>
+        <textarea v-model="msgInfo" placeholder="请输入简介"></textarea>
+    </p>
+    <custom-screen :inputvalue1="msgName" :inputvalue2="msgInfo"></custom-screen>
+</div>
+<script>
+    Vue.component('custom-screen',{
+        template:'<div><h2>昵称：</h2><pre>简介：</pre></div>',
+        props:['inputvalue1','inputvalue2'],
+        data:function(){
+            return{}
+        }
+    })
+
+</script>
+<script>
+    new Vue({
+        el:'#demo3',
+        data:function () {
+            return{
+                msgName:'',
+                msgInfo:''
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局组件示例</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="demo1">
+<my-button></my-button>
+</div>
+<script>
+    Vue.component('my-button',{   //定义一个组件和组件名
+        template:'<div><button @click="handleClick">{{count}}</button></div>',　　//组件里面放了一个按钮
+        data:function(){　　定义一个ｄａｔａ方法，用来返回值
+            return{
+                count:0
+            }
+        },
+        methods:{　　//定义ｍｅｔｈｏｄｓ集合，用来执行单击事件的操作，里面用来定义处理单击事件的方法
+            handleClick:function(){
+                this.count++;
+            }
+        }
+    })
+</script>
+<script>
+    new Vue({　　　//定义所作用的对象
+        el:'#demo1'
+    })
+</script>
+</body>
+</html>

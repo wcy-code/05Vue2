@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件局部注册</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="demo2">
+<my-button></my-button>
+    <my-button></my-button>
+</div>
+<script>
+    var myButton={ //　定义组件的局部变量
+        template:'<div><button @click="handleClick">{{count}}</button></div>',  //　定义组件结构
+        data:function(){    //　基本返回方法
+            return{
+                count:0
+            }
+        },
+        methods:{ //处理单击事件的集合
+            handleClick:function(){
+                this.count++;
+            }
+        }
+    }
+</script>
+<script>
+    new Vue({
+        el:'#demo2',
+        components:{
+            'my-button':myButton  //注意：这是局部组件注册的关键语句
+        }
+    })
+</script>
+</body>
+</html>
